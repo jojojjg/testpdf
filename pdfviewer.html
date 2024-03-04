@@ -1,0 +1,48 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pdf de test</title>
+</head>
+
+<html>
+
+<body>
+	<div class="pdf-container" data-href="RC-Bio.pdf"></div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Use latest PDF.js build from Github --> 
+	<!-- script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script -->
+	<script src="pdfviewer.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".pdf-container").pdfviewer({
+				scale: 2,
+				onDocumentLoaded: function() {
+					var num = $(this).data('pdfviewer').pages();
+					$(this).data('pdfviewer').autoFit();
+					//alert('onDocumentLoaded:'+num);		
+				},
+	            onPrevPage: function() { 
+	            	//alert('onPrevPage'); 
+	            	return true; 
+	            },
+	            onNextPage: function() { 
+	            	//alert('onNextPage'); 
+	            	return true; 
+	            },
+	            onBeforeRenderPage: function(num) {
+	            	//alert('onBeforeRenderPage'); 
+	                return true;
+	            },
+	            onRenderedPage: function(num) {
+	            	//alert('onRenderedPage'); 
+	            }
+			});
+		});
+	</script>
+</body>
+
+    
+</html>
